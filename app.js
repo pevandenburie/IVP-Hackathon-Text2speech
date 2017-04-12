@@ -6,8 +6,13 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+var content = require('./routes/content');
+var contentInstances = require('./routes/contentInstances');
 
 var app = express();
+
+
+console.log("start server");
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -21,8 +26,13 @@ app.get('/*',function(req,res,next){
   next(); // http://expressjs.com/guide.html#passing-route control
 });
 
+
+
+//Mapping of calls
 app.use('/', index);
 app.use('/users', users);
+app.use('/ctap/r1.3.0/agg/content', content);
+app.use('/ctap/r1.3.0/contentInstances', contentInstances);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -1,0 +1,85 @@
+{
+   "id": "DSNY2395427000000171~DSNY2395427000000173~vod",
+   "isVodFavorite": false,
+   "content": {
+      "title": "Man in Black SVOD",
+      "episodeTitle": "aktuell im Kino",
+      "duration": 180000,
+      "synopsis": {
+         "shortSynopsis": "Die Avengers wollen Bösewicht Ultron an der Ausrottung der Menschheit hinder..",
+         "longSynopsis": "Die Avengers wollen Bösewicht Ultron an der Ausrottung der Menschheit hinder.."  
+    },
+      "productionLocation": "US",
+      "parentalRating": {
+         "name": "Ages 12 and older",
+         "value": 12  
+    },
+      "purchases": [
+         {
+            "authorizationType": "SVOD",
+            "currencySymbol": "$",
+            "offerId": "1",
+            "price": 50000   
+      }  
+    ],
+      "productionYear": 2014,
+      "type": "standalone",
+      "id": "DSNY2395427000000171~DSNY2395427000000173~vod",
+      "videoFormat": "hd",
+      "isErotic": false,
+      "contentType": "standalone",
+      "isEntitled": true,
+      "genres": [
+         {
+            "name": "Action"   
+      },
+         {
+            "name": "Science fiction"   
+      }  
+    ],
+      "_links": {
+         "self": {
+            "href": "\/content\/DSNY2395427000000171"   
+      }  
+    },
+      "credits": [
+        
+    ],
+      "resource": "content",
+      "audioFormat": "stereo",
+      "isAdult": false 
+  },
+   "resource": "contentInstance",
+   "isPlayable": true,
+   "channel": {
+      "isEntitled": true,
+      "isPlayable": true,
+      "_links": {
+         "playSession": {
+            "method": "POST",
+            "href": "\/devices\/me\/playsessions?instanceId=DSNY2395427000000171~DSNY2395427000000173~vod"   
+      },
+         "self": {
+            "href": "\/contentInstances\/DSNY2395427000000171~DSNY2395427000000173~vod"   
+      }  
+    } 
+  },
+   "contentType": "standalone",
+   "type": "vod",
+   "title": "Man in Black SVOD",
+   "_links": {
+      "playSession": {
+         "method": "POST",
+         "href": "\/devices\/me\/playsessions?instanceId=DSNY2395427000000171~DSNY2395427000000173~vod"  
+    },
+      "self": {
+         "href": "\/contentInstances\/DSNY2395427000000171~DSNY2395427000000173~vod"  
+    } 
+  },
+   "lastPlayPosition": 0,
+   "duration": 180000,
+   "contentFlags": [
+      "recordableWithoutInteractive" 
+  ],
+   "isEntitled": true
+}
