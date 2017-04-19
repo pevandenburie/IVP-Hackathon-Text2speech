@@ -1,6 +1,11 @@
+/* This module gets contentInstances via ITK */
+
+
 var express = require('express');
 var router = express.Router();
 var fs = require('fs');
+var request = require('request');
+var constants = require('../constants.js');
 
 
 
@@ -9,31 +14,42 @@ var fs = require('fs');
 */
 router.get('/:instanceId*', function(req, res, next) 
 {
-
 	// Getting HTTP headers
 	console.log("x-forwarded-for header: " + req.headers['x-forwarded-for']);
 	console.log("x-cisco-device-state: " + req.headers['x-cisco-device-state']);
 	console.log("x-cisco-vcs-identity: " + req.headers['x-cisco-vcs-identity']);
 
+
 	// Get instanceId value
 	console.log("instanceId: " + req.params.instanceId);
 
-	// Input of response is a json file
-	fs.readFile("./data/contentInstances.json", "utf8", function(err, content) 
-	{
-		if (err) 
-		{
-			return console.log(err);
-		}
-  		res.send(content, null, 3);
-//		console.log(content);
-	});
+	getFromItk(req.params.instanceId, res);
+
 });
 
 
 
+function getFromItk(instanceId, res)
+{
+	// Set ITK Authorization header
+	var headers = { 
+    	'Authorization' : 'Bearer ' + constants.AuthToken
+	};
 
 
+
+	
+	// Build URL including instanceId.
+	var RequestUrl =  constants.ITKHostPrefix + '/contentInstances/' + instanceId;
+
+	request({ url: RequestUrl, method: "GET", headers: headers }, 
+		function (err, resp, data) 
+		{
+			console.log ("Request URL " +  RequestUrl);
+			
+			res.send(data);
+		});
+}
 
 
 module.exports = router;

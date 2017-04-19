@@ -3,16 +3,21 @@ var path = require('path');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var constants = require('./constants.js');
 
 var index = require('./routes/index');
-var users = require('./routes/users');
-var content = require('./routes/content');
-var contentInstances = require('./routes/contentInstances');
+
+
+var content = require('./routes/content'); // Uses with dummy file
+// var content = require('./routes/contentItk'); // Uses ITK
+var contentInstances = require('./routes/contentInstances'); // Uses dummy file
+// var contentInstances = require('./routes/contentInstancesItk'); // Uses ITK
+
+
 
 var app = express();
 
-
-console.log("start server");
+console.log("start server - listening on port " + constants.httpListeningPort);
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -30,7 +35,6 @@ app.get('/*',function(req,res,next){
 
 //Mapping of calls
 app.use('/', index);
-app.use('/users', users);
 app.use('/ctap/r1.3.0/agg/content', content);
 app.use('/ctap/r1.3.0/contentInstances', contentInstances);
 
@@ -55,4 +59,4 @@ app.use(function(err, req, res, next) {
 //module.exports = app;
 
 
-app.listen(8090);
+app.listen(constants.httpListeningPort);

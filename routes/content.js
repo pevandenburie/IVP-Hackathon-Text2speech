@@ -1,7 +1,9 @@
+/* This module gets content from dummy file*/
+
+
 var express = require('express');
 var router = express.Router();
 var fs = require('fs');
-//var JSON = require('json');
 
 
 /* Expected URL fomrat (example)

@@ -1,6 +1,9 @@
 var express = require('express');
 var router = express.Router();
 var fs = require('fs');
+var request = require('request');
+var constants = require('../constants.js');
+
 
 
 
@@ -18,6 +21,9 @@ router.get('/:instanceId*', function(req, res, next)
 	// Get instanceId value
 	console.log("instanceId: " + req.params.instanceId);
 
+	getFromItk(instanceId, res);
+
+/*
 	// Input of response is a json file
 	fs.readFile("./data/contentInstances.json", "utf8", function(err, content) 
 	{
@@ -28,7 +34,27 @@ router.get('/:instanceId*', function(req, res, next)
   		res.send(content, null, 3);
 //		console.log(content);
 	});
+*/
 });
+
+
+function getFromItk(instanceId, res)
+{
+	console.log("in getFromItk")
+	var headers = { 
+    	'Authorization' : 'Bearer ' + constants.AuthToken
+	};
+
+
+	var RequestUrl =  'https://apx.cisco.com/spvss/infinitehome/ivptoolkit/clientrefapi/sandbox_0.4.1/contentInstances/' + instanceId;
+	request({ url: RequestUrl, method: "GET", headers: headers }, 
+		function (err, resp, data) 
+		{
+			console.log ("Request URL " +  RequestUrl);
+			
+			res.send(data);
+		});
+}
 
 
 
