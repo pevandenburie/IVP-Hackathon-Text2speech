@@ -5,19 +5,23 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var constants = require('./constants.js');
 
-var index = require('./routes/index');
 
-
+/*
+ NodeJS Express - "routes"
+ Files that know how to implement an HTTP endpoint
+ */
+var index   = require('./routes/index');
+var feature = require('./routes/feature');
 var content = require('./routes/content'); // Uses with dummy file
 // var content = require('./routes/contentItk'); // Uses ITK
 var contentInstances = require('./routes/contentInstances'); // Uses dummy file
 // var contentInstances = require('./routes/contentInstancesItk'); // Uses ITK
 
 
-
+/*
+ Start up the web app with some standard settings
+ */
 var app = express();
-
-console.log("start server - listening on port " + constants.httpListeningPort);
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -33,10 +37,16 @@ app.get('/*',function(req,res,next){
 
 
 
-//Mapping of calls
+/*
+ Mapping of URLs to "routes"
+ If you add a route above then set the base URL here
+ */
 app.use('/', index);
+app.use('/feature', feature);
 app.use('/ctap/r1.3.0/agg/content', content);
 app.use('/ctap/r1.3.0/contentInstances', contentInstances);
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -56,7 +66,9 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-//module.exports = app;
 
+// Actually start the server and start listening
+
+console.log("start server - listening on port " + constants.httpListeningPort);
 
 app.listen(constants.httpListeningPort);
