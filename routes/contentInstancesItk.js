@@ -40,14 +40,21 @@ function getFromItk(instanceId, res)
 
 	
 	// Build URL including instanceId.
-	var RequestUrl =  constants.ITKHostPrefix + '/contentInstances/' + instanceId;
-
+	var RequestUrl =  constants.ITKHostPrefix + '/contentInstances/' + instanceId; 
 	request({ url: RequestUrl, method: "GET", headers: headers }, 
 		function (err, resp, data) 
 		{
 			console.log ("Request URL " +  RequestUrl);
 			
-			res.send(data);
+			if (err)
+			{
+				console.log(err);
+				res.send(err);
+			}
+			else
+			{
+				res.send(data);
+			}
 		});
 }
 

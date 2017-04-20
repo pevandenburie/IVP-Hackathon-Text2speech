@@ -42,25 +42,18 @@ function getFromItk(categoryId, res)
 		function (err, resp, data) 
 		{
 			console.log ("Request URL " +  RequestUrl);
-			
-			res.send(data);
+
+			if (err)
+			{
+				console.log(err);
+				res.send(err);
+			}
+			else
+			{
+				res.send(data);
+			}
 		});
 }
-
-
-/*
-		function (err, resp, data) 
-		{
-			console.log ("Request URL " +  RequestUrl);
-			console.log("!!! err " + err);
-//			console.log("@@@ resp.statusCode " + resp.statusCode);
-			console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
-			console.log(JSON.stringify(resp));
-			console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
-			console.log("### data " + data);
-			res.send(data);
-		});
-*/
 
 
 module.exports = router;

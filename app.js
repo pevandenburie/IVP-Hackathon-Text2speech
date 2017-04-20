@@ -12,10 +12,16 @@ var constants = require('./constants.js');
  */
 var index   = require('./routes/index');
 var feature = require('./routes/feature');
+
+//Use Dummy files
 var content = require('./routes/content'); // Uses with dummy file
-// var content = require('./routes/contentItk'); // Uses ITK
 var contentInstances = require('./routes/contentInstances'); // Uses dummy file
-// var contentInstances = require('./routes/contentInstancesItk'); // Uses ITK
+
+//Use ITK
+//var content = require('./routes/contentItk'); // Uses ITK
+//var contentInstances = require('./routes/contentInstancesItk'); // Uses ITK
+
+var actions = require('./routes/actions'); // Uses ITK
 
 
 /*
@@ -45,6 +51,7 @@ app.use('/', index);
 app.use('/feature', feature);
 app.use('/ctap/r1.3.0/agg/content', content);
 app.use('/ctap/r1.3.0/contentInstances', contentInstances);
+app.use('/actions', actions);
 
 
 
