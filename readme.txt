@@ -1,12 +1,11 @@
-20-April-2017
+20-April-2017 Doron Tzur
 * Added get actions API. Dummy functions in defined format.
   In order to run:
   http://localhost:8090/actions?instanceId=auto%3ANice_Guys~Nice_GuysinstanceId~vod
 * Enhanced logging in case of communication errors
 
-Added get actions API
 
-
+*****
 19-April-2017 Doron Tzur
 Added the following functionality:
 * GET /agg/content and GET contentInstances using ITK as well as with dummy files. 
