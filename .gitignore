@@ -1,2 +1,5 @@
 .idea
 node_modules
+app.log
+helloworld.tar.gz
+app_pid.txt

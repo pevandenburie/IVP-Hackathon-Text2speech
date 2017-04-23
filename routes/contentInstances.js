@@ -18,22 +18,15 @@ router.get('/:instanceId*', function(req, res, next)
 	// Get instanceId value
 	console.log("instanceId: " + req.params.instanceId);
 
-	// Input of response is a json file
-	fs.readFile("./data/contentInstances.json", "utf8", function(err, content) 
-	{
-		if (err) 
-		{
-			return console.log(err);
+	fs.readFile("./data/"+req.params.instanceId+".json", "utf8", function(err, content){
+		if(err) {
+			// could not find the content
+			res.status(404);
+		} else {
+			res.send(content, null, 3);
 		}
-  		res.send(content, null, 3);
-//		console.log(content);
 	});
 });
-
-
-
-
-
 
 
 module.exports = router;

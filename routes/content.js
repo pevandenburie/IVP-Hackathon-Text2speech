@@ -16,25 +16,19 @@ router.get('/', function(req, res, next)
 	console.log("x-cisco-device-state: " + req.headers['x-cisco-device-state']);
 	console.log("x-cisco-vcs-identity: " + req.headers['x-cisco-vcs-identity']);
 
-
 	// Get categoryId
 	console.log("categoryId: " + req.query.categoryId);
 
 	// Input of response is a json file
-	fs.readFile("./data/content.json", "utf8", function(err, content) 
+	fs.readFile("./data/labsContent.json", "utf8", function(err, content)
 	{
 		if (err) 
 		{
 			return console.log(err);
 		}
   		res.send(content, null, 3);
-//		console.log(content);
 	});
 });
-
-
-
-
 
 
 

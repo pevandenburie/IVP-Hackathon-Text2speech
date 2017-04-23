@@ -1,0 +1,111 @@
+{
+    "id": "xlabs.music.origins-of-symmetry",
+    "resource": "contentInstance",
+    "source": "vod",
+    "type": "vod",
+    "contentType": "standalone",
+    "title": "Origins of Symetry",
+    "isEntitled": false,
+    "isPlayable": true,
+    "contentFlags": [
+        "recordableWithoutInteractive"
+    ],
+    "expirationDateTime": 172800000,
+    "duration": 3060000,
+    "content": {
+        "id": "SODI2Jack00001TPRPUPL~SODI3Jack00001TPRPUPL~vod",
+        "resource": "content",
+        "type": "standalone",
+        "contentType": "standalone",
+        "title": "Jack00001TPRPUPL",
+        "productionYear": 2013,
+        "audioFormat": "surround",
+        "media": [
+            {
+                "type": "regular",
+                "mimeType": "image/jpeg",
+                "url": "https://www.besteveralbums.com/albumart/album_large_1276_4e4e43e875f6d.jpg",
+                "height": 426,
+                "width": 295
+            }
+        ],
+        "credits": [],
+        "genres": [
+            {
+                "name": "Great Music"
+            }
+        ],
+        "duration": 3060000,
+        "synopsis": {
+            "shortSynopsis": "To give Origin of Symmetry some context, it was the album that pushed Muse into upper echelons of the charts; a set that marked Matt Bellamy’s lyrics out as speaking defiantly, ponderously, on behalf of Muse’s ever-growing fanbase. During interviews in the run-up, they talked of this album marrying their equally-divided love of Rachmaninoff and Rage Against the Machine, and a growing number of fans lapped it up.",
+            "longSynopsis": "To give Origin of Symmetry some context, it was the album that pushed Muse into upper echelons of the charts; a set that marked Matt Bellamy’s lyrics out as speaking defiantly, ponderously, on behalf of Muse’s ever-growing fanbase. During interviews in the run-up, they talked of this album marrying their equally-divided love of Rachmaninoff and Rage Against the Machine, and a growing number of fans lapped it up."
+        },
+        "isEntitled": false,
+        "isAdult": false,
+        "isErotic": false,
+        "expirationDateTime": 172800000,
+        "parentalRating": {
+            "name": "no mapping",
+            "value": 0
+        },
+        "locator": "{0,java.lang.Long,INVERTED}-|-{MThlYTg0MDdkNjQzMmNlNDI0NzQ=,java.lang.String,NORMAL}[+]{dateTimeAdded,INVERTED}-|-{hashKey,NORMAL}",
+        "_links": {
+            "self": {
+                "href": "/content/SODI2Jack00001TPRPUPL"
+            }
+        }
+    },
+    "_links": {
+        "self": {
+            "href": "/contentInstances/xlabs.music.origins-of-symmetry"
+        },
+        "playSession": {
+            "method": "POST",
+            "href": "/devices/me/playsessions?instanceId=xlabs.music.origins-of-symmetry"
+        },
+        "extraActions" : [
+            {
+                "method" : "POST",
+                "name" : "Like",
+                "type" : "url",
+                "href" : "/action/hello?contentId=xlabs.music.origins-of-symmetry"
+            },
+            {
+                "name" : "Open web",
+                "type" : "app",
+                "platforms" : {
+                    "ios" : {
+                        "applicationId" : "https://www.youtube.com/watch?v=5DZZdlmdrwg"
+                    }
+                }
+            },
+            {
+                "name" : "Play in Netflix",
+                "type" : "app",
+                "platforms" : {
+                    "ios" : {
+                        "applicationId" : "Hackathon2017",
+                        "data" : {
+                            "context" : "14573,",
+                            "url" : "http:\/\/10.149.204.148:8090\/ctap\/r1.3.0\/contentInstances\/auto%3ANice_Guys~Nice_GuysinstanceId~vod"
+                        }
+                    },
+                    "android" : {
+                        "applicationId" : "http:\/\/www.netflix.com\/title\/324982",
+                        "data" : {
+                            "context" : "com.netflix.mediaclient",
+                            "class" : "com.netflix.mediaclient.ui.search.SearchActivity"
+                        }
+                    },
+                    "pcmac" : {
+                        "applicationId" : "http:\/\/www.netflix.com\/title\/324982",
+                        "data" : {
+                            "context" : "com.netflix.mediaclient",
+                            "class" : "com.netflix.mediaclient.ui.search.SearchActivity"
+                        }
+                    }
+                }
+            }
+        ]
+    }
+}
