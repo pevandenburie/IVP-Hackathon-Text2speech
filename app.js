@@ -21,7 +21,8 @@ var contentInstances = require('./routes/contentInstances'); // Uses dummy file
 //var content = require('./routes/contentItk'); // Uses ITK
 //var contentInstances = require('./routes/contentInstancesItk'); // Uses ITK
 
-var actions = require('./routes/actions'); // Uses ITK
+var actions = require('./routes/actions');
+var wishList = require('./routes/wishList');
 
 
 /*
@@ -52,6 +53,7 @@ app.use('/feature', feature);
 app.use('/ctap/r1.3.0/agg/content', content);
 app.use('/ctap/r1.3.0/contentInstances', contentInstances);
 app.use('/actions', actions);
+app.use('/wishList', wishList);
 
 
 

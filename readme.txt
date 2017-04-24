@@ -1,3 +1,9 @@
+23-April-2017 Doron Tzur
+Added basic wishlist following functionality - Adding, removing and Getting list of instances - when server is closed, the list is deleted
+* POST: http://localhost:8090/wishList/auto:Nice_Guys~Nice_GuysinstanceId~vod
+* DELETE: http://localhost:8090/wishList/auto:Nice_Guys~Nice_GuysinstanceId~vod
+* GET: http://localhost:8090/wishList
+
 20-April-2017 Doron Tzur
 * Added get actions API. Dummy functions in defined format.
   In order to run:
