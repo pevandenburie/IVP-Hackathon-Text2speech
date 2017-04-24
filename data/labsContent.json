@@ -72,68 +72,76 @@
                 }
             }
         },
-    {
-        "id": "DSNY2395427000000271~DSNY2395427000000272HEVC~vod",
-        "resource": "contentInstance",
-        "source": "vod",
-        "type": "vod",
-        "contentType": "standalone",
-        "title": "Shrek",
-        "isEntitled": false,
-        "isPlayable": true,
-        "contentFlags": [
-            "recordableWithoutInteractive"
-        ],
-        "expirationDateTime": 2073600000,
-        "duration": 9420000,
-        "content": {
-            "id": "DSNY2395427000000271~DSNY2395427000000272HEVC~vod",
-            "resource": "content",
-            "type": "standalone",
+        {
+            "id": "auto:The_Secret_Life_of_Pets~The_Secret_Life_of_PetsinstanceId~vod",
+            "resource": "contentInstance",
+            "source": "vod",
+            "type": "vod",
             "contentType": "standalone",
-            "title": "Shrek",
-            "productionYear": 2014,
-            "productionLocation": "US",
-            "audioFormat": "stereo",
-            "credits": [],
-            "genres": [
-                {
-                    "name": "Animated"
-                },
-                {
-                    "name": "Sports related"
-                }
+            "title": "The Secret Life of Pets",
+            "isEntitled": true,
+            "isPlayable": true,
+            "contentFlags": [
+                "recordableWithoutInteractive"
             ],
-            "duration": 9420000,
-            "synopsis": {
-                "shortSynopsis": "An ogre, in order to regain his swamp, travels along with an annoying donkey in order to bring a princess to a scheming lord, wishing himself King.",
-                "longSynopsis": "An ogre, in order to regain his swamp, travels along with an annoying donkey in order to bring a princess to a scheming lord, wishing himself King."
+            "duration": 180000,
+            "content": {
+                "id": "auto:The_Secret_Life_of_Pets~The_Secret_Life_of_PetsinstanceId~vod",
+                "resource": "content",
+                "type": "standalone",
+                "contentType": "standalone",
+                "title": "The Secret Life of Pets",
+                "audioFormat": "stereo",
+                "media": [
+                    {
+                        "type": "regular",
+                        "mimeType": "image/jpeg",
+                        "url": "http://origin.ztv.systems/poster/the_secret_life_of_pets.jpg",
+                        "height": 168,
+                        "width": 300
+                    },
+                    {
+                        "type": "regular",
+                        "mimeType": "image/jpeg",
+                        "url": "http://origin.ztv.systems/poster/the_secret_life_of_pets_box.jpg",
+                        "height": 288,
+                        "width": 185
+                    }
+                ],
+                "credits": [],
+                "genres": [
+                    {
+                        "name": "Children"
+                    }
+                ],
+                "duration": 180000,
+                "synopsis": {
+                    "shortSynopsis": "Taking place in a Manhattan apartment building, Max's life as a favorite pet is turned upside down, when his owner brings home a sloppy mongrel named Duke.",
+                    "longSynopsis": "Taking place in a Manhattan apartment building, Max's life as a favorite pet is turned upside down, when his owner brings home a sloppy mongrel named Duke."
+                },
+                "isEntitled": true,
+                "isAdult": false,
+                "isErotic": false,
+                "parentalRating": {
+                    "name": "no mapping"
+                },
+                "locator": "{4pqa5K+B4KWl54q05KW645CQ56mu44SvyKHksYHgoqXnk5TloIjmsIbhvIfgvoDknr/mj4HmgIAB,java.lang.String,NORMAL}-|-{0,java.lang.Integer,NORMAL}-|-{0,java.lang.Integer,NORMAL}-|-{MjJmNDg0YmQ5MDBhYTM5MGM3YTI=,java.lang.String,NORMAL}[+]{sort.title.eng,NORMAL}-|-{singleSeasonNumber,NORMAL}-|-{singleEpisodeNumber,NORMAL}-|-{hashKey,NORMAL}",
+                "_links": {
+                    "self": {
+                        "href": "/content/auto%3AThe_Secret_Life_of_Pets"
+                    }
+                }
             },
-            "isEntitled": false,
-            "isAdult": false,
-            "isErotic": false,
-            "expirationDateTime": 2073600000,
-            "parentalRating": {
-                "name": "Adults only",
-                "value": 18
-            },
-            "locator": "{0,java.lang.Long,INVERTED}-|-{MGYwZTQ0Y2NlOTdhMTdhMWM2YzU=,java.lang.String,NORMAL}[+]{dateTimeAdded,INVERTED}-|-{hashKey,NORMAL}",
             "_links": {
                 "self": {
-                    "href": "/content/DSNY2395427000000271"
+                    "href": "/contentInstances/auto%3AThe_Secret_Life_of_Pets~The_Secret_Life_of_PetsinstanceId~vod"
+                },
+                "playSession": {
+                    "method": "POST",
+                    "href": "/devices/me/playsessions?instanceId=auto%3AThe_Secret_Life_of_Pets~The_Secret_Life_of_PetsinstanceId~vod"
                 }
             }
         },
-        "_links": {
-            "self": {
-                "href": "/contentInstances/DSNY2395427000000271~DSNY2395427000000272HEVC~vod"
-            },
-            "playSession": {
-                "method": "POST",
-                "href": "/devices/me/playsessions?instanceId=DSNY2395427000000271~DSNY2395427000000272HEVC~vod"
-            }
-        }
-    },
     {
         "id": "xlabs.music.origins-of-symmetry",
         "resource": "contentInstance",
