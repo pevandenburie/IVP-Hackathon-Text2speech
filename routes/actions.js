@@ -36,13 +36,20 @@ function setActions(instanceId)
 
 
 	var action1 = {
-        "name" : "Add to list",
+        "name" : "Add to wishList",
         "type" : "url",
         "method" : "POST", 
         "href" : "http://localhost:" + constants.httpListeningPort + "/wishList/" + instanceId
 		};
 
 	var action2 = {
+        "name" : "Delete from wishList",
+        "type" : "url",
+        "method" : "DELETE", 
+        "href" : "http://localhost:" + constants.httpListeningPort + "/wishList/" + instanceId
+		};
+
+	var action3 = {
 	    'name' : 'Like',
 	    'type' : 'app',
 	    'platforms' : {
@@ -59,13 +66,6 @@ function setActions(instanceId)
 						'instanceId' : instanceId
 					}
 					
-				},
-			'pcmac' : {
-					'applicationId' : 'pcmac-like',
-					'parameters' : {
-						'instanceId' : instanceId
-					}
-					
 				}
 			}
 		};
@@ -73,6 +73,7 @@ function setActions(instanceId)
 
 	actions[key].push(action1);
 	actions[key].push(action2);
+	actions[key].push(action3);
 
 	return actions;
 }

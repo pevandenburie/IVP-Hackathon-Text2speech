@@ -1,3 +1,7 @@
+24-April-2017 Doron Tzur
+Enhanced wishlist functionality. GET will not iterate through the list and bring content info from ITK.
+
+
 23-April-2017 Doron Tzur
 Added basic wishlist following functionality - Adding, removing and Getting list of instances - when server is closed, the list is deleted
 * POST: http://localhost:8090/wishList/auto:Nice_Guys~Nice_GuysinstanceId~vod

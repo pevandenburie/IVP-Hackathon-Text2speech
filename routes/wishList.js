@@ -6,6 +6,7 @@ var router = express.Router();
 var fs = require('fs');
 var request = require('request');
 var constants = require('../constants.js');
+var async = require('async'); 
 
 
 var wishList = [];
@@ -77,16 +78,95 @@ router.delete('/:instanceId*', function(req, res, next)
 });
 
 
-/* Get wishList */
-/* Expected URL fomrat (example)
-	GET: http://localhost:8090/wishList
-*/
+/* Get wishList - Gets content info from ITK */
+/* Expected URL fomrat (example)	GET: http://localhost:8090/wishList*/
+router.get('/', function(req, res, next)
+{
+
+	// Getting HTTP headers
+	console.log("x-forwarded-for header: " + req.headers['x-forwarded-for']);
+	console.log("x-cisco-device-state: " + req.headers['x-cisco-device-state']);
+	console.log("x-cisco-vcs-identity: " + req.headers['x-cisco-vcs-identity']);
+
+	// Response format
+	var responseContent = {"count":0,"total":0,"content":[],"locators":{"start":"{0,java.lang.Long,INVERTED}-|-{NzJmY2Q1ODg3NGZlM2YwYWVjMTk=,java.lang.String,NORMAL}[+]{dateTimeAdded,INVERTED}-|-{hashKey,NORMAL}","end":"{0,java.lang.Long,INVERTED}-|-{YzA4NTlkMDYyYzI0MjZmNWZlYjA=,java.lang.String,NORMAL}[+]{dateTimeAdded,INVERTED}-|-{hashKey,NORMAL}"},"_links":{"self":{"href":"/agg/content?categoryId=urn%3Aspvss%3Aih%3Azorro%3Aterm%3A7000%3AACTION&needVodPurchaseProperty=true&offset=undefined&limit=10&classificationId=urn%3Aspvss%3Aih%3Azorro%3Aterm%3A7000%3AACTION&phrase=undefined&serviceLocator=undefined&sort=undefined&seriesId=undefined&seasonId=undefined"}}}
+	var contentArray = [];
+
+	async.forEach(wishList, function(instance, cb){
+		getContentInstanceFromItk(instance.id, function(err, contentData){
+			if (err){
+				console.log("err");
+				cb(err);
+			}
+			// If content is found, add it and increment counters
+			if (contentData)
+			{
+ 				responseContent.count++;
+				responseContent.total++;
+				contentArray.push(contentData);
+ 			}			
+			cb();
+		});
+	}, function(err){
+		if (err){
+			//deal with the error
+		}
+		
+		// Set content in content array in the response
+ 		responseContent.content = contentArray;
+		res.send(responseContent, null, 3);
+
+	});
+});
+
+
+
+
+function getContentInstanceFromItk(instanceId, cb )
+{
+	// Set ITK Authorization header
+	var headers = { 
+    	'Authorization' : 'Bearer ' + constants.AuthToken
+	};
+
+ 	
+	// Build URL including instanceId.
+	var RequestUrl =  constants.ITKHostPrefix + '/contentInstances/' + instanceId; 
+	request({ url: RequestUrl, method: "GET", headers: headers }, 
+		function (err, resp, data) 
+		{
+			console.log ("Request URL " +  RequestUrl);
+			
+			if (err)
+			{
+				console.log(err);
+				cb(0, null); 
+			}
+			else
+			{
+				/* If access denied due to token expiration don't add content
+					Need better error handling */
+				if(data.includes("Access Denied" )) 
+				{
+					console.log("Access Denied");
+					cb(0, null);
+				}
+				else
+					cb(0,JSON.parse(data))
+			}
+		});
+}
+
+
+/* Get wishList - Basic */
+/* Expected URL fomrat (example)	GET: http://localhost:8090/wishList*/
+/*
 router.get('/', function(req, res, next)
 {
 	console.log(wishList);
 	res.send(wishList, null, 3);
 });
-
+*/
 
 
 module.exports = router;
