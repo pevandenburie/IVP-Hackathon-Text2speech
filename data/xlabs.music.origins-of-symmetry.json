@@ -71,7 +71,7 @@
                 "href" : "/action/hello?contentId=xlabs.music.origins-of-symmetry"
             },
             {
-                "name" : "Open web",
+                "name" : "Play in Youtube",
                 "type" : "app",
                 "platforms" : {
                     "ios" : {

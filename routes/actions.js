@@ -30,26 +30,26 @@ router.get('/', function(req, res, next)
 function setActions(instanceId)
 {
 
-	var actions = {}; // empty Object
-	var key = 'extraActions';
-	actions[key] = []; // empty Array, which you can push() values into
+	var actions = [];
 
-
-	var action1 = {
-        "name" : "Add to wishList",
+	actions.push({
+        "name" : "Add to list",
         "type" : "url",
         "method" : "POST", 
         "href" : "http://localhost:" + constants.httpListeningPort + "/wishList/" + instanceId
-		};
+	});
 
-	var action2 = {
-        "name" : "Delete from wishList",
-        "type" : "url",
-        "method" : "DELETE", 
-        "href" : "http://localhost:" + constants.httpListeningPort + "/wishList/" + instanceId
-		};
+	actions.push({
+		"name" : "Play in YouTube",
+		"type" : "app",
+		"platforms" : {
+			"ios" : {
+				"applicationId" : "https://www.youtube.com/watch?v=5DZZdlmdrwg"
+			}
+		}
+	});
 
-	var action3 = {
+	actions.push({
 	    'name' : 'Like',
 	    'type' : 'app',
 	    'platforms' : {
@@ -66,20 +66,19 @@ function setActions(instanceId)
 						'instanceId' : instanceId
 					}
 					
+				},
+			'pcmac' : {
+					'applicationId' : 'pcmac-like',
+					'parameters' : {
+						'instanceId' : instanceId
+					}
+					
 				}
 			}
-		};
-
-
-	actions[key].push(action1);
-	actions[key].push(action2);
-	actions[key].push(action3);
+		});
 
 	return actions;
 }
-
-
-
 
 
 module.exports = router;

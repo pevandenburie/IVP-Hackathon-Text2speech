@@ -20,7 +20,7 @@ Feel free to add more methods here as needed
 
 var express = require('express');
 var router = express.Router();
-
+var refAPI = require("../lib/refAPI");
 
 /* Expected URL
  http://localhost:8090/feature/*
@@ -37,7 +37,28 @@ router.get('/hello', function(req, res, next)
           "hello" : "world"
         }
     );
+});
 
+router.get("/ref/*", function(req, res, next){
+
+    var urlToCall = req.url;
+    // strip off the '/ref' prefix
+    var pos = "/ref".length;
+    urlToCall = urlToCall.substr(pos, urlToCall.length - pos);
+
+
+    console.log("ref API test: " + urlToCall);
+
+    refAPI.call("GET", urlToCall, {}, function(err, data){
+        console.log(JSON.stringify(err));
+        console.log(JSON.stringify(data));
+
+        if(err) {
+            res.send(err);
+        } else {
+            res.send(data);
+        }
+    });
 });
 
 
