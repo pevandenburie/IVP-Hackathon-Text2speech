@@ -50,7 +50,12 @@ app.get('/*',function(req,res,next){
  */
 app.use('/', index);
 app.use('/feature', feature);
-app.use('/ctap/r1.3.0/agg/content', content);
+
+// Use this route for the static content
+//app.use('/ctap/r1.3.0/agg/content', content);
+
+// Use this route for wishlist
+app.use('/ctap/r1.3.0/agg/content', wishList);
 app.use('/ctap/r1.3.0/contentInstances', contentInstances);
 app.use('/actions', actions);
 app.use('/wishList', wishList);

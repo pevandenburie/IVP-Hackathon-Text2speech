@@ -29,54 +29,42 @@ router.get('/', function(req, res, next)
 
 function setActions(instanceId)
 {
-
 	var actions = [];
 
 	actions.push({
-        "name" : "Add to list",
-        "type" : "url",
-        "method" : "POST", 
-        "href" : "http://localhost:" + constants.httpListeningPort + "/wishList/" + instanceId
+		"name" : "Add to list",
+		"type" : "url",
+		"method" : "POST",
+		"href" : "http://ec2-52-35-68-247.us-west-2.compute.amazonaws.com:" + constants.httpListeningPort + "/wishlist/" + instanceId
 	});
 
 	actions.push({
-		"name" : "Play in YouTube",
+		"name" : "Remove form list",
+		"type" : "url",
+		"method" : "DELETE",
+		"href" : "http://ec2-52-35-68-247.us-west-2.compute.amazonaws.com:" + constants.httpListeningPort + "/wishlist/" + instanceId
+	});
+
+	actions.push({
+		"name" : "On the Web",
 		"type" : "app",
 		"platforms" : {
 			"ios" : {
-				"applicationId" : "https://www.youtube.com/watch?v=5DZZdlmdrwg"
+				"applicationId" : "http://www.imdb.com/title/tt2277860/"
 			}
 		}
 	});
 
 	actions.push({
-	    'name' : 'Like',
-	    'type' : 'app',
-	    'platforms' : {
-			'ios' : {
-					'applicationId' : 'like-launch',
-					'parameters' : {
-						'instanceId' : instanceId
-					}
-					
-				},
-			'android' : {
-					'applicationId' : 'like.package',
-					'parameters' : {
-						'instanceId' : instanceId
-					}
-					
-				},
-			'pcmac' : {
-					'applicationId' : 'pcmac-like',
-					'parameters' : {
-						'instanceId' : instanceId
-					}
-					
-				}
+		"name" : "Watch in YouTube",
+		"type" : "app",
+		"platforms" : {
+			"ios" : {
+				"applicationId" : "https://www.youtube.com/watch?v=3JNLwlcPBPI"
 			}
-		});
-
+		}
+	});
+	
 	return actions;
 }
 
