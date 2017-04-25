@@ -35,14 +35,14 @@ function setActions(instanceId)
 		"name" : "Add to list",
 		"type" : "url",
 		"method" : "POST",
-		"href" : "http://ec2-52-35-68-247.us-west-2.compute.amazonaws.com:" + constants.httpListeningPort + "/wishlist/" + instanceId
+		"href" : constants.httpHost + ":" + constants.httpListeningPort + "/wishlist/" + instanceId
 	});
 
 	actions.push({
 		"name" : "Remove form list",
 		"type" : "url",
 		"method" : "DELETE",
-		"href" : "http://ec2-52-35-68-247.us-west-2.compute.amazonaws.com:" + constants.httpListeningPort + "/wishlist/" + instanceId
+		"href" : constants.httpHost + ":" + constants.httpListeningPort + "/wishlist/" + instanceId
 	});
 
 	actions.push({
@@ -64,7 +64,7 @@ function setActions(instanceId)
 			}
 		}
 	});
-	
+
 	return actions;
 }
 
