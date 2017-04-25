@@ -126,10 +126,11 @@ function getContentInstanceFromItk(instanceId, cb )
 {
 	// Set ITK Authorization header
 	var headers = { 
-    	'Authorization' : 'Bearer ' + constants.AuthToken
+    	'Authorization' : 'Bearer ' + global.AuthToken
 	};
 
- 	
+	console.log("Accessing ITK: Token:" + global.AuthToken);
+
 	// Build URL including instanceId.
 	var RequestUrl =  constants.ITKHostPrefix + '/contentInstances/' + instanceId; 
 	request({ url: RequestUrl, method: "GET", headers: headers }, 

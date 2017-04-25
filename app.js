@@ -4,6 +4,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var constants = require('./constants.js');
+var request = require('request');
 
 
 /*
@@ -85,4 +86,23 @@ app.use(function(err, req, res, next) {
 
 console.log("start server - listening on port " + constants.httpListeningPort);
 
+global.AuthToken = constants.AuthToken;
+
+request({ url: constants.AuthUrl, method: "POST"}, function(err, resp, data) {
+  if(err) {
+    console.log("Error getting authentication Token: " + err)
+  } else {
+    data = JSON.parse(data);
+    console.log("New Access token: " + data.access_token);
+
+    global.AuthToken = data.access_token;
+
+    console.log("Updated Access token: " + global.AuthToken);
+
+  }
+});
+
+
 app.listen(constants.httpListeningPort);
+
+
