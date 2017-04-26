@@ -53,13 +53,17 @@ router.get('/tonight', function(req, res, next)
     //console.log('body:', body);
 
     var answer = JSON.parse(body);
+
     var name = answer.channels[3].name;
     var title = answer.channels[3].schedule[0].title;
-    var startTime = "8 pm";
+    // var startTime = "8 pm";
 
     //var textToTell = "" + title + " at " + startTime + " on " + name;
     //var textToTell = "On " + name + ". At " + startTime + ". " + title + ".";
-    var textToTell = "On " + name + ". " + title + ".";
+    var textToTell1 = "On " + name + ", " + title + ". .";
+    var textToTell2 = "On " + "Yes" + ", " + "The United States of Leland" + ". .";
+    var textToTell3 = "On " + "Yes3" + ", " + "Pusher" + ". .";
+    textToTell = textToTell1 + textToTell2 + textToTell3
 
     console.log('text2speech tonight:', textToTell);
 
