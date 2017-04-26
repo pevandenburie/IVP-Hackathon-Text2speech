@@ -25,6 +25,8 @@ var contentInstances = require('./routes/contentInstances'); // Uses dummy file
 var actions = require('./routes/actions');
 var wishList = require('./routes/wishList');
 
+var voiceSynth = require('./routes/voiceSynth');
+
 
 /*
  Start up the web app with some standard settings
@@ -61,7 +63,7 @@ app.use('/ctap/r1.3.0/contentInstances', contentInstances);
 app.use('/actions', actions);
 app.use('/wishList', wishList);
 
-
+app.use('/voiceSynth', voiceSynth);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -104,5 +106,3 @@ request({ url: constants.AuthUrl, method: "POST"}, function(err, resp, data) {
 
 
 app.listen(constants.httpListeningPort);
-
-
