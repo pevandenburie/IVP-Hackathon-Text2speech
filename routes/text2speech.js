@@ -3,6 +3,7 @@
 */
 var express = require('express');
 var router = express.Router();
+var request = require('request');
 var tts = require('../lib/voice-rss-tts');
 
 textToSpeech = function(textToTell, res) {
@@ -34,6 +35,36 @@ router.get('/', function(req, res, next)
   console.log('text2speech: ', req.originalUrl);
   var textToTell = req.query.textToTell;
   textToSpeech(textToTell, res);
+});
+
+
+router.get('/tonight', function(req, res, next)
+{
+  // Getting HTTP headers
+  console.log("x-forwarded-for header: " + req.headers['x-forwarded-for']);
+  console.log("x-cisco-device-state: " + req.headers['x-cisco-device-state']);
+  console.log("x-cisco-vcs-identity: " + req.headers['x-cisco-vcs-identity']);
+
+  console.log('text2speech tonight: ', req.originalUrl);
+
+  request("http://localhost:8090/feature/ref/agg/grid?startDateTime=2017-04-27T23:44Z&eventsLimit=3", function (error, response, body) {
+    console.log('error:', error);
+    console.log('statusCode:', response && response.statusCode);
+    //console.log('body:', body);
+
+    var answer = JSON.parse(body);
+    var name = answer.channels[3].name;
+    var title = answer.channels[3].schedule[0].title;
+    var startTime = "8 pm";
+
+    //var textToTell = "" + title + " at " + startTime + " on " + name;
+    //var textToTell = "On " + name + ". At " + startTime + ". " + title + ".";
+    var textToTell = "On " + name + ". " + title + ".";
+
+    console.log('text2speech tonight:', textToTell);
+
+    textToSpeech(textToTell, res);
+  });
 });
 
 
