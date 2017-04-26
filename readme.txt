@@ -1,3 +1,6 @@
+26-April-2017 Doron Tzur
+Added Android actions.
+
 24-April-2017 Doron Tzur
 Enhanced wishlist functionality. GET will not iterate through the list and bring content info from ITK.
 

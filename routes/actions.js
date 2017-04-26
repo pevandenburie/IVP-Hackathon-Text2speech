@@ -38,32 +38,34 @@ function setActions(instanceId)
 		"href" : constants.httpHost + ":" + constants.httpListeningPort + "/wishlist/" + instanceId
 	});
 
-	actions.push({
-		"name" : "Remove form list",
-		"type" : "url",
-		"method" : "DELETE",
-		"href" : constants.httpHost + ":" + constants.httpListeningPort + "/wishlist/" + instanceId
-	});
 
-	actions.push({
-		"name" : "On the Web",
-		"type" : "app",
-		"platforms" : {
-			"ios" : {
-				"applicationId" : "http://www.imdb.com/title/tt2277860/"
-			}
-		}
-	});
+    actions.push({
+            "name" : "On the Web",
+            "type" : "app",
+            "platforms" : {
+                    "ios" : {
+                            "applicationId" : "http://www.imdb.com/title/tt2277860/"
+                    },
+                    "android" : {
+                           "applicationId" : "http://www.imdb.com/title/tt2277860/"
+                    }
+            }
+    });
 
-	actions.push({
-		"name" : "Watch in YouTube",
-		"type" : "app",
-		"platforms" : {
-			"ios" : {
-				"applicationId" : "https://www.youtube.com/watch?v=3JNLwlcPBPI"
-			}
-		}
-	});
+
+    actions.push({
+            "name" : "Watch in YouTube",
+            "type" : "app",
+            "platforms" : {
+                    "ios" : {
+                            "applicationId" : "https://www.youtube.com/watch?v=3JNLwlcPBPI"
+                    },
+                    "android" : {
+                            "applicationId" : "https://www.youtube.com/watch?v=3JNLwlcPBPI"
+
+                    }
+            }
+    });
 
 	return actions;
 }
