@@ -25,7 +25,7 @@ var contentInstances = require('./routes/contentInstances'); // Uses dummy file
 var actions = require('./routes/actions');
 var wishList = require('./routes/wishList');
 
-var voiceSynth = require('./routes/voiceSynth');
+var text2speech = require('./routes/text2speech');
 
 
 /*
@@ -63,7 +63,7 @@ app.use('/ctap/r1.3.0/contentInstances', contentInstances);
 app.use('/actions', actions);
 app.use('/wishList', wishList);
 
-app.use('/voiceSynth', voiceSynth);
+app.use('/text2speech', text2speech);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
