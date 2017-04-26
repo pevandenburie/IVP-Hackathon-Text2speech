@@ -39,6 +39,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+app.use('/text2speech', text2speech);
+
 // global controller
 app.get('/*',function(req,res,next){
   res.setHeader('Content-Type', 'application/json');
@@ -63,7 +66,6 @@ app.use('/ctap/r1.3.0/contentInstances', contentInstances);
 app.use('/actions', actions);
 app.use('/wishList', wishList);
 
-app.use('/text2speech', text2speech);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
