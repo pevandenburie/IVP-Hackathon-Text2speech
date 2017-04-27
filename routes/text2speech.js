@@ -54,31 +54,20 @@ router.get('/tonight', function(req, res, next)
 
     var answer = JSON.parse(body);
 
-    nameList = ["yesactionhd", "yesohhd", "Yes1"]
-    nameList2pronunce = ["YES ACTION", "YES OH", "YES 1"]
+    nameList = ["yesactionhd", "yesohhd", "Yes1"];
+    nameList2pronunce = ["YES ACTION", "YES OH", "YES 1"];
 
-    textToTell = ""
-    for(var i = 0; i < answer.channels.length;i++){
+    textToTell = "Tonight. .";
+    for (var i = 0; i < answer.channels.length; i++) {
 
         var name = answer.channels[i].name;
         console.log('channel:', name);
-        if(isInArray(name, nameList)){
-            var adaptedName = nameList2pronunce[nameList.indexOf(name)]
+        if (isInArray(name, nameList)) {
+            var adaptedName = nameList2pronunce[nameList.indexOf(name)];
             var title = answer.channels[i].schedule[0].title;
 
             textToTell += "On " + adaptedName + ", " + title + ". .";
         }
-
-        //var name = answer.channels[3].name;
-        //var title = answer.channels[3].schedule[0].title;
-        // var startTime = "8 pm";
-
-        //var textToTell = "" + title + " at " + startTime + " on " + name;
-        //var textToTell = "On " + name + ". At " + startTime + ". " + title + ".";
-        //var textToTell1 = "On " + name + ", " + title + ". .";
-        //var textToTell2 = "On " + "Yes" + ", " + "The United States of Leland" + ". .";
-        //var textToTell3 = "On " + "Yes3" + ", " + "Pusher" + ". .";
-        //textToTell = textToTell1 + textToTell2 + textToTell3
     }
 
     console.log('text2speech tonight:', textToTell);
