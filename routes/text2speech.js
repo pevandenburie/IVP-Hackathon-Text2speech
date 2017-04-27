@@ -50,21 +50,23 @@ router.get('/tonight', function(req, res, next)
   request("http://localhost:8090/feature/ref/agg/grid?startDateTime=2017-04-27T20:00Z&eventsLimit=3", function (error, response, body) {
     console.log('error:', error);
     console.log('statusCode:', response && response.statusCode);
-    console.log('body:', body);
+    //console.log('body:', body);
 
     var answer = JSON.parse(body);
 
-    nameList = ["yesactionhd", "SPORT5HD", "Yes1"]
+    nameList = ["yesactionhd", "yesohhd", "Yes1"]
+    nameList2pronunce = ["YES ACTION", "YES OH", "YES 1"]
 
     textToTell = ""
     for(var i = 0; i < answer.channels.length;i++){
 
         var name = answer.channels[i].name;
+        console.log('channel:', name);
         if(isInArray(name, nameList)){
-
+            var adaptedName = nameList2pronunce[nameList.indexOf(name)]
             var title = answer.channels[i].schedule[0].title;
 
-            textToTell += "On " + name + ", " + title + ". .";
+            textToTell += "On " + adaptedName + ", " + title + ". .";
         }
 
         //var name = answer.channels[3].name;
