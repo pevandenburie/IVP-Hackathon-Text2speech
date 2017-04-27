@@ -47,23 +47,37 @@ router.get('/tonight', function(req, res, next)
 
   console.log('text2speech tonight: ', req.originalUrl);
 
-  request("http://localhost:8090/feature/ref/agg/grid?startDateTime=2017-04-27T23:44Z&eventsLimit=3", function (error, response, body) {
+  request("http://localhost:8090/feature/ref/agg/grid?startDateTime=2017-04-27T20:00Z&eventsLimit=3", function (error, response, body) {
     console.log('error:', error);
     console.log('statusCode:', response && response.statusCode);
-    //console.log('body:', body);
+    console.log('body:', body);
 
     var answer = JSON.parse(body);
 
-    var name = answer.channels[3].name;
-    var title = answer.channels[3].schedule[0].title;
-    // var startTime = "8 pm";
+    nameList = ["yesactionhd", "SPORT5HD", "Yes1"]
 
-    //var textToTell = "" + title + " at " + startTime + " on " + name;
-    //var textToTell = "On " + name + ". At " + startTime + ". " + title + ".";
-    var textToTell1 = "On " + name + ", " + title + ". .";
-    var textToTell2 = "On " + "Yes" + ", " + "The United States of Leland" + ". .";
-    var textToTell3 = "On " + "Yes3" + ", " + "Pusher" + ". .";
-    textToTell = textToTell1 + textToTell2 + textToTell3
+    textToTell = ""
+    for(var i = 0; i < answer.channels.length;i++){
+
+        var name = answer.channels[i].name;
+        if(isInArray(name, nameList)){
+
+            var title = answer.channels[i].schedule[0].title;
+
+            textToTell += "On " + name + ", " + title + ". .";
+        }
+
+        //var name = answer.channels[3].name;
+        //var title = answer.channels[3].schedule[0].title;
+        // var startTime = "8 pm";
+
+        //var textToTell = "" + title + " at " + startTime + " on " + name;
+        //var textToTell = "On " + name + ". At " + startTime + ". " + title + ".";
+        //var textToTell1 = "On " + name + ", " + title + ". .";
+        //var textToTell2 = "On " + "Yes" + ", " + "The United States of Leland" + ". .";
+        //var textToTell3 = "On " + "Yes3" + ", " + "Pusher" + ". .";
+        //textToTell = textToTell1 + textToTell2 + textToTell3
+    }
 
     console.log('text2speech tonight:', textToTell);
 
@@ -76,5 +90,10 @@ router.post('/', function (req, res) {
     var textToTell = req.body.textToTell;
     textToSpeech(textToTell, res);
 });
+
+
+function isInArray(value, array) {
+    return array.indexOf(value) > -1;
+}
 
 module.exports = router;
