@@ -1,5 +1,9 @@
 27-April-2017 Hackathon 27 April 2017 – Tagadas team
-Added TextToSpeech feature for partially sighted persons.
+Added TextToSpeech feature for partially sighted persons:
+
+- GET: http://localhost:8090/text2speech?textToTell=%22hello%20world%22
+- GET: http://localhost:8090/text2speech/tonight 
+
 
 **STB:**
 - On following events
