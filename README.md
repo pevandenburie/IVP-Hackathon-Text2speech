@@ -18,6 +18,8 @@ Added TextToSpeech feature for partially sighted persons.
 
 STB will play mp3 audio content describing selected event or vod asset
 
+![UC & Architecure](/img/UC_and_Architecture.png)
+
 
 26-April-2017 Doron Tzur
 Added Android actions.
