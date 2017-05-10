@@ -25,6 +25,8 @@ var contentInstances = require('./routes/contentInstances'); // Uses dummy file
 var actions = require('./routes/actions');
 var wishList = require('./routes/wishList');
 
+var text2speech = require('./routes/text2speech');
+
 
 /*
  Start up the web app with some standard settings
@@ -36,6 +38,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+
+app.use('/text2speech', text2speech);
 
 // global controller
 app.get('/*',function(req,res,next){
@@ -60,7 +65,6 @@ app.use('/ctap/r1.3.0/agg/content', wishList);
 app.use('/ctap/r1.3.0/contentInstances', contentInstances);
 app.use('/actions', actions);
 app.use('/wishList', wishList);
-
 
 
 // catch 404 and forward to error handler
@@ -104,5 +108,3 @@ request({ url: constants.AuthUrl, method: "POST"}, function(err, resp, data) {
 
 
 app.listen(constants.httpListeningPort);
-
-
