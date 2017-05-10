@@ -1,3 +1,24 @@
+27-April-2017 Hackathon 27 April 2017 – Tagadas team
+Added TextToSpeech feature for partially sighted persons.
+
+**STB:**
+- On following events
+  * Key press on video playback or event change, 
+  * or grid/library focus change 
+  * or event description selection
+- Client code
+  * parse metadata -> LogicalChannel Number & Event Name 
+  * [& event description]
+- Call new API : Download corresponding audio file 
+
+**CTAP proxy:**
+- Exchange with CTAP and retreive contextual information
+- Will call TextToSpeech server RestAPI (text, lang, output format, quality)
+- And will return mp3 file with text speech: « Channel <ch> <Channel name> » and or « Event description »
+
+STB will play mp3 audio content describing selected event or vod asset
+
+
 26-April-2017 Doron Tzur
 Added Android actions.
 
